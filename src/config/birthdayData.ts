@@ -48,11 +48,17 @@ export const BIRTHDAY_DATA: BirthdayData = {
 
 Semoga Allah selalu menjaga langkahmu, melapangkan hatimu, menguatkanmu dalam setiap proses, dan memudahkan segala hal baik yang sedang kamu perjuangkan.
 
-Aku berdoa semoga hafalanmu selalu terjaga, ilmu yang kamu pelajari membawa manfaat, dan cita-cita yang kamu impikan bisa tercapai pada waktu terbaik menurut Allah.
+Selamat bertambah usia yaa. Semoga di umur yang baru ini, kamu selalu diberi kesehatan, kebahagiaan, kemudahan dalam setiap urusan, dan tentunya kelancaran dalam menjalani perkuliahan. Semoga apa yang sedang kamu usahakan sekarang maupun hal-hal yang masih kamu impikan nantinya bisa satu per satu tercapai. Aamiin 🤲🏻
+Aku juga berharap semoga di umur yang baru ini kamu bisa menjadi pribadi yang semakin baik, semakin kuat menghadapi apa pun yang datang, dan tetap menjadi Hasna yang aku kenal selama ini. Kalau suatu saat nanti ada hari-hari yang terasa berat, semoga kamu selalu punya alasan untuk tetap tersenyum dan semangat lagi.
 
-Terima kasih sudah menjadi bagian dari cerita yang mengajarkanku banyak hal selama ini. Semoga kita selalu diberi kemampuan untuk menjaga diri, memperbaiki diri, dan tetap berjalan menuju tujuan yang baik.
+Oh iya, makasih yaa sudah hadir di hidupku sampai sejauh ini. Lucu juga kalau dipikir-pikir, kita yang dulu cuma saling suka sejak SMA, sekarang sudah sama-sama kuliah dan masih bisa saling cerita hampir setiap hari, meskipun sekarang kita ada di kota yang berbeda wkwkwk 😭
+Aku nggak tahu ke depannya bakal seperti apa, tapi untuk sekarang aku senang bisa mengenal kamu lebih dekat, bisa berbagi cerita sama kamu, dan bisa punya seseorang seperti kamu untuk aku tunggu kabarnya setiap hari. 🥹
 
-Semoga Allah memberikanmu banyak alasan untuk bersyukur dan kebahagiaan yang membawa berkah. Aamiin 🤲🏻`,
+Sekali lagi, happy birthday, Hasna! Semoga hari ini jadi salah satu hari yang menyenangkan buat kamu. Jangan lupa bahagia, jangan terlalu keras sama diri sendiri, dan semoga hal-hal baik selalu menemukan jalan untuk datang ke kamu.
+Semoga Allah memberikanmu banyak alasan untuk bersyukur dan kebahagiaan yang membawa berkah. Aamiin 🤲🏻
+
+"BTW ini aku copas dari AI wkwk 😙😙"
+`,
 
   // --- 3. UNTAIAN DOA & HARAPAN SPESIAL ---
   specialWishes: [
