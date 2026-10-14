@@ -1,0 +1,6 @@
+{
+  "name": "Kartu Ucapan Selamat Ulang Tahun & Admin Panel",
+  "description": "Website ucapan selamat ulang tahun interaktif dan mewah dengan kembang api spektakuler, animasi lilin kue, dan panel admin untuk kustomisasi pesan dinamis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
