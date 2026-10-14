@@ -353,16 +353,6 @@ export function CelebrationCard({ onShowCountdown }: CelebrationCardProps) {
         <p>
           Dibuat dengan segenap ketulusan untuk merayakan hari kelahiranmu 🩵✨
         </p>
-        {onShowCountdown && (
-          <button
-            onClick={onShowCountdown}
-            className="text-[11px] text-sky-300/80 hover:text-yellow-300 transition-colors py-1 px-3 rounded-xl hover:bg-slate-900/90 border border-sky-500/20 cursor-pointer flex items-center gap-1.5"
-            title="Kembali ke halaman hitung mundur"
-          >
-            <span>⏳</span>
-            <span>Lihat Tampilan Countdown</span>
-          </button>
-        )}
       </footer>
     </div>
   );
