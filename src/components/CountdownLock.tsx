@@ -120,8 +120,7 @@ export function CountdownLock({ onUnlock, onPreviewBypass }: CountdownLockProps)
       {/* Discreet Bypass for Owner (almost invisible in bottom corner, clickable for preview) */}
       <button
         onClick={onPreviewBypass}
-        className="fixed bottom-3 right-3 text-[2px] text-sky-400/90 hover:text-sky-300/70 p-2 rounded transition-colors cursor-pointer"
-        title="Pratinjau kartu"
+        className="fixed bottom-3 right-3 text-[2px] text-sky-400/90 hover:text-sky-300/70 p-2 rounded"
       >
         ✦
       </button>
