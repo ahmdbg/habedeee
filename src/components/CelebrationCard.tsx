@@ -14,7 +14,11 @@ import { BIRTHDAY_DATA } from '../config/birthdayData';
 import { InteractiveCake } from './InteractiveCake';
 import { audioEngine } from '../utils/audio';
 
-export function CelebrationCard() {
+interface CelebrationCardProps {
+  onShowCountdown?: () => void;
+}
+
+export function CelebrationCard({ onShowCountdown }: CelebrationCardProps) {
   const [isOpened, setIsOpened] = useState(false);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
 
@@ -345,10 +349,20 @@ export function CelebrationCard() {
       </main>
 
       {/* Gentle Footer */}
-      <footer className="w-full max-w-3xl flex items-center justify-center text-center text-xs text-sky-400/70 pt-8 mt-4 border-t border-sky-950">
+      <footer className="w-full max-w-3xl flex flex-col sm:flex-row items-center justify-between gap-3 text-center text-xs text-sky-400/70 pt-8 mt-4 border-t border-sky-950">
         <p>
           Dibuat dengan segenap ketulusan untuk merayakan hari kelahiranmu 🩵✨
         </p>
+        {onShowCountdown && (
+          <button
+            onClick={onShowCountdown}
+            className="text-[11px] text-sky-300/80 hover:text-yellow-300 transition-colors py-1 px-3 rounded-xl hover:bg-slate-900/90 border border-sky-500/20 cursor-pointer flex items-center gap-1.5"
+            title="Kembali ke halaman hitung mundur"
+          >
+            <span>⏳</span>
+            <span>Lihat Tampilan Countdown</span>
+          </button>
+        )}
       </footer>
     </div>
   );

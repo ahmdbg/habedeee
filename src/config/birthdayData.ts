@@ -29,6 +29,9 @@ export interface BirthdayData {
   musicAutoPlay: boolean;
   showCake: boolean;
   showFireworks: boolean;
+
+  // 5. Pengaturan Waktu Countdown
+  unlockTargetTime: string; // Waktu web bisa dibuka: 15 Oktober 2026 pukul 20.00
 }
 
 export const BIRTHDAY_DATA: BirthdayData = {
@@ -67,4 +70,8 @@ Semoga Allah memberikanmu banyak alasan untuk bersyukur dan kebahagiaan yang mem
   musicAutoPlay: true,  // Putar melodi otomatis saat kartu dibuka
   showCake: true,       // Tampilkan kue & lilin interaktif
   showFireworks: true,  // Tampilkan animasi kembang api di latar belakang
+
+  // --- 6. TARGET WAKTU COUNTDOWN ---
+  // Sebelum pukul 20.00 WIB tanggal 15 Oktober 2026, web terkunci dengan halaman hitung mundur
+  unlockTargetTime: '2026-10-15T20:00:00+07:00',
 };
