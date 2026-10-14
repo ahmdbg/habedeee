@@ -11,7 +11,6 @@ interface Particle {
   color: string;
   size: number;
   gravity: number;
-  trail: Array<{ x: number; y: number; alpha: number }>;
 }
 
 interface Rocket {
@@ -22,8 +21,7 @@ interface Rocket {
   vx: number;
   vy: number;
   color: string;
-  exploded: boolean;
-  type: 'willow' | 'peony' | 'sparkler';
+  type: 'willow' | 'peony';
 }
 
 interface FireworksCanvasProps {
@@ -37,29 +35,38 @@ export function FireworksCanvas({ active = true, soundEnabled = true }: Firework
   const particlesRef = useRef<Particle[]>([]);
   const rocketsRef = useRef<Rocket[]>([]);
   const lastAutoLaunchRef = useRef<number>(0);
+  const isMobileRef = useRef<boolean>(false);
 
   const colors = [
-    '#f59e0b', // amber gold
-    '#fbbf24', // yellow gold
-    '#ec4899', // rose pink
-    '#a855f7', // purple royal
-    '#38bdf8', // sky cyan
-    '#34d399', // emerald
-    '#f43f5e', // ruby
-    '#ffffff', // diamond white
+    '#38bdf8', // sky blue
+    '#7dd3fc', // baby blue
+    '#bae6fd', // soft pastel blue
+    '#fde047', // soft butter yellow
+    '#fef08a', // pale pastel yellow
+    '#facc15', // warm star yellow
+    '#ffffff', // starlight white
+    '#e0f2fe', // ice sky blue
   ];
 
-  const createExplosion = useCallback((x: number, y: number, color: string, type: 'willow' | 'peony' | 'sparkler') => {
+  const createExplosion = useCallback((x: number, y: number, color: string, type: 'willow' | 'peony') => {
     if (soundEnabled) {
-      audioEngine.playFireworkPop(0.8 + Math.random() * 0.4);
+      audioEngine.playFireworkPop(0.85 + Math.random() * 0.35);
     }
 
-    const count = type === 'willow' ? 80 : 65;
+    const isMobile = isMobileRef.current;
+    const maxParticles = isMobile ? 65 : 150;
+
+    // Cull old particles if approaching limit to guarantee 60fps on mobile
+    if (particlesRef.current.length > maxParticles) {
+      particlesRef.current.splice(0, particlesRef.current.length - maxParticles);
+    }
+
+    const count = isMobile ? 22 : (type === 'willow' ? 55 : 45);
     const isGoldWillow = type === 'willow';
 
     for (let i = 0; i < count; i++) {
-      const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.3;
-      const speed = isGoldWillow ? 2.5 + Math.random() * 4.5 : 3.5 + Math.random() * 5.5;
+      const angle = (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.4;
+      const speed = isGoldWillow ? 2.5 + Math.random() * 3.5 : 3.5 + Math.random() * 4.5;
 
       particlesRef.current.push({
         x,
@@ -67,24 +74,25 @@ export function FireworksCanvas({ active = true, soundEnabled = true }: Firework
         vx: Math.cos(angle) * speed,
         vy: Math.sin(angle) * speed,
         alpha: 1,
-        decay: isGoldWillow ? 0.009 + Math.random() * 0.008 : 0.015 + Math.random() * 0.015,
-        color: isGoldWillow ? (Math.random() > 0.3 ? '#fef08a' : '#d97706') : color,
-        size: isGoldWillow ? 2.5 : 2 + Math.random() * 2,
-        gravity: isGoldWillow ? 0.045 : 0.065,
-        trail: [],
+        decay: isGoldWillow ? 0.012 + Math.random() * 0.01 : 0.018 + Math.random() * 0.015,
+        color: isGoldWillow ? (Math.random() > 0.4 ? '#fde047' : '#f59e0b') : color,
+        size: isMobile ? 2 : 2.5,
+        gravity: isGoldWillow ? 0.05 : 0.07,
       });
     }
   }, [soundEnabled]);
 
   const launchRocket = useCallback((targetX: number, targetY: number) => {
     if (!canvasRef.current) return;
-    const startX = targetX + (Math.random() - 0.5) * 150;
-    const startY = canvasRef.current.height;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    const startX = targetX + (Math.random() - 0.5) * (width * 0.2);
+    const startY = height;
     const dy = targetY - startY;
     const dx = targetX - startX;
-    const distance = Math.hypot(dx, dy);
-    const speed = 12 + Math.random() * 4;
-    const types: Array<'willow' | 'peony' | 'sparkler'> = ['willow', 'peony', 'peony', 'sparkler'];
+    const distance = Math.hypot(dx, dy) || 1;
+    const speed = isMobileRef.current ? 10 + Math.random() * 3 : 13 + Math.random() * 4;
 
     rocketsRef.current.push({
       x: startX,
@@ -94,90 +102,109 @@ export function FireworksCanvas({ active = true, soundEnabled = true }: Firework
       vx: (dx / distance) * speed,
       vy: (dy / distance) * speed,
       color: colors[Math.floor(Math.random() * colors.length)],
-      exploded: false,
-      type: types[Math.floor(Math.random() * types.length)],
+      type: Math.random() > 0.5 ? 'willow' : 'peony',
     });
   }, [colors]);
 
-  // Click anywhere to launch interactive firework
-  const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
+  // Click / touch to launch interactive firework
+  const handleCanvasInteraction = (clientX: number, clientY: number) => {
     const rect = canvasRef.current?.getBoundingClientRect();
     if (!rect) return;
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
     launchRocket(x, y);
   };
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d', { alpha: false });
     if (!ctx) return;
 
-    const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+    // Detect mobile
+    const checkMobile = () => {
+      isMobileRef.current = window.innerWidth < 768 || ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
     };
+    checkMobile();
+
+    const handleResize = () => {
+      checkMobile();
+      // Cap scale on high DPI mobile to reduce GPU fill rate
+      const dpr = Math.min(window.devicePixelRatio || 1, isMobileRef.current ? 1 : 1.25);
+      canvas.width = Math.floor(window.innerWidth * dpr);
+      canvas.height = Math.floor(window.innerHeight * dpr);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.scale(dpr, dpr);
+    };
+
     handleResize();
     window.addEventListener('resize', handleResize);
 
+    // Initial background clear
+    ctx.fillStyle = '#020617';
+    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+    let isDocumentVisible = true;
+    const handleVisibilityChange = () => {
+      isDocumentVisible = !document.hidden;
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
     const render = (time: number) => {
-      if (!ctx || !canvas) return;
+      if (!isDocumentVisible || !active) {
+        animationFrameRef.current = requestAnimationFrame(render);
+        return;
+      }
 
-      // Dark translucent clearing for motion trails
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.22)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.globalCompositeOperation = 'lighter';
+      const screenWidth = window.innerWidth;
+      const screenHeight = window.innerHeight;
 
-      // Auto launch fireworks periodically if active
-      if (active && time - lastAutoLaunchRef.current > 1800) {
-        lastAutoLaunchRef.current = time + (Math.random() * 1200 - 400);
-        const randomX = canvas.width * 0.15 + Math.random() * (canvas.width * 0.7);
-        const randomY = canvas.height * 0.12 + Math.random() * (canvas.height * 0.38);
+      // Fast, lightweight motion trail clear (no expensive globalCompositeOperation swapping)
+      ctx.fillStyle = 'rgba(2, 6, 23, 0.22)';
+      ctx.fillRect(0, 0, screenWidth, screenHeight);
+
+      // Auto launch firework periodically
+      const launchInterval = isMobileRef.current ? 3200 : 2000;
+      if (time - lastAutoLaunchRef.current > launchInterval) {
+        lastAutoLaunchRef.current = time + (Math.random() * 800 - 400);
+        const randomX = screenWidth * 0.15 + Math.random() * (screenWidth * 0.7);
+        const randomY = screenHeight * 0.1 + Math.random() * (screenHeight * 0.35);
         launchRocket(randomX, randomY);
       }
 
-      // Update & draw rockets
+      // Update & draw rockets (simple fast stroke, no shadowBlur)
+      ctx.lineWidth = 2.5;
       for (let i = rocketsRef.current.length - 1; i >= 0; i--) {
         const r = rocketsRef.current[i];
+        const prevX = r.x;
+        const prevY = r.y;
+
         r.x += r.vx;
         r.y += r.vy;
 
-        // Draw rocket glowing head
+        // Draw streamlined rocket streak
+        ctx.strokeStyle = r.color;
         ctx.beginPath();
-        ctx.arc(r.x, r.y, 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = '#ffffff';
-        ctx.shadowColor = r.color;
-        ctx.shadowBlur = 8;
-        ctx.fill();
-        ctx.shadowBlur = 0;
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(r.x, r.y);
+        ctx.stroke();
 
-        // Spark tail
-        ctx.beginPath();
-        ctx.arc(r.x - r.vx * 0.8, r.y - r.vy * 0.8, 1.8, 0, Math.PI * 2);
-        ctx.fillStyle = r.color;
-        ctx.fill();
-
-        // Check if rocket reached altitude
+        // Check target altitude
         if (r.y <= r.targetY || r.vy >= 0) {
           createExplosion(r.x, r.y, r.color, r.type);
           rocketsRef.current.splice(i, 1);
         }
       }
 
-      // Update & draw particles
+      // Update & draw particles using GPU-friendly streak rendering
       for (let i = particlesRef.current.length - 1; i >= 0; i--) {
         const p = particlesRef.current[i];
 
-        // Store trail history
-        p.trail.push({ x: p.x, y: p.y, alpha: p.alpha });
-        if (p.trail.length > 5) {
-          p.trail.shift();
-        }
+        const oldX = p.x;
+        const oldY = p.y;
 
-        p.vx *= 0.96;
-        p.vy *= 0.96;
+        p.vx *= 0.95;
+        p.vy *= 0.95;
         p.vy += p.gravity;
         p.x += p.vx;
         p.y += p.vy;
@@ -188,27 +215,17 @@ export function FireworksCanvas({ active = true, soundEnabled = true }: Firework
           continue;
         }
 
-        // Render trail
-        for (let t = 0; t < p.trail.length; t++) {
-          const pt = p.trail[t];
-          ctx.beginPath();
-          ctx.arc(pt.x, pt.y, p.size * (0.3 + (t / p.trail.length) * 0.7), 0, Math.PI * 2);
-          ctx.fillStyle = p.color;
-          ctx.globalAlpha = Math.max(0, pt.alpha * (t / p.trail.length) * 0.6);
-          ctx.fill();
-        }
-
-        // Render core particle
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color;
+        // Streak lines render 50x faster than multiple arc() paths and create realistic spark trails
+        ctx.strokeStyle = p.color;
         ctx.globalAlpha = Math.max(0, p.alpha);
-        ctx.shadowColor = p.color;
-        ctx.shadowBlur = 6;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-        ctx.globalAlpha = 1;
+        ctx.lineWidth = p.size;
+        ctx.beginPath();
+        ctx.moveTo(oldX, oldY);
+        ctx.lineTo(p.x, p.y);
+        ctx.stroke();
       }
+
+      ctx.globalAlpha = 1;
 
       animationFrameRef.current = requestAnimationFrame(render);
     };
@@ -217,6 +234,7 @@ export function FireworksCanvas({ active = true, soundEnabled = true }: Firework
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
@@ -226,10 +244,10 @@ export function FireworksCanvas({ active = true, soundEnabled = true }: Firework
   return (
     <canvas
       ref={canvasRef}
-      onClick={handleCanvasClick}
+      onClick={(e) => handleCanvasInteraction(e.clientX, e.clientY)}
       title="Klik di mana saja untuk menembakkan kembang api!"
-      className="fixed inset-0 pointer-events-auto z-0 cursor-crosshair"
-      style={{ touchAction: 'none' }}
+      className="fixed inset-0 w-full h-full pointer-events-auto z-0 cursor-crosshair"
+      style={{ touchAction: 'pan-y' }}
     />
   );
 }
