@@ -35,7 +35,7 @@ export const BIRTHDAY_DATA: BirthdayData = {
   recipientNickname: 'Hasnaaa',
   age: '19',
   celebrationDate: 'Hari Ulang Tahun',
-  photoUrl: '/src/assets/images/hasna.jpeg', // Foto profil penerima kartu
+  photoUrl: '/src/assets/image/hasna.jpeg', // Foto profil penerima kartu
 
   // --- 2. UCAPAN & DOA ---
   messageTitle: 'Happy Birthday, Hasnaaa! 🌟🥳🎉',
