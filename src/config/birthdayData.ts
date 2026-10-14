@@ -31,7 +31,7 @@ export interface BirthdayData {
 
 export const BIRTHDAY_DATA: BirthdayData = {
   // --- 1. IDENTITAS PENERIMA ---
-  recipientFullName: 'pppp Nailah salsabila',
+  recipientFullName: 'Hasna Nailah salsabila',
   recipientNickname: 'Hasnaaa',
   age: '19',
   celebrationDate: 'Hari Ulang Tahun',
