@@ -54,44 +54,44 @@ export function InteractiveCake({ recipientName, age, onBlownOut }: InteractiveC
       </div>
 
       {/* Cake Illustration */}
-      <div className="relative w-64 h-52 flex flex-col items-center justify-end select-none mt-2">
-        {/* Candle & Flame */}
-        <div className="absolute top-5 flex flex-col items-center z-20">
-          {!isBlownOut ? (
-            <button
-              onClick={handleBlowCandle}
-              title="Ketuk untuk meniup lilin!"
-              className="relative cursor-pointer group focus:outline-none transition-transform hover:scale-110"
-              aria-label="Tiup lilin ulang tahun"
-            >
-              {/* Flame (Warm butter yellow with sky blue core) */}
-              <div className="w-5 h-8 bg-gradient-to-t from-sky-400 via-amber-300 to-yellow-100 rounded-full animate-flicker shadow-[0_0_15px_#fde047]" />
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-3.5 bg-sky-300/80 rounded-full blur-[1px]" />
-              <div className="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/90 text-yellow-200 text-[10px] px-2 py-0.5 rounded whitespace-nowrap border border-yellow-400/30">
-                Tiup lilinnya! ✨
-              </div>
-            </button>
-          ) : (
-            /* Smoke wisps after blowing out */
-            <div className="relative h-8 flex flex-col items-center justify-end">
-              <div className="w-1.5 h-6 bg-gradient-to-t from-sky-200/50 to-transparent rounded-full blur-[1px] animate-pulse" />
-              <div className="w-2.5 h-2.5 bg-sky-300/30 rounded-full blur-sm -translate-y-2" />
-            </div>
-          )}
-
-          {/* Wick */}
-          <div className="w-0.5 h-3 bg-neutral-800" />
-
-          {/* Candle Body (Baby blue with butter yellow spiral stripes) */}
-          <div className="w-3.5 h-12 bg-gradient-to-b from-sky-100 via-sky-200 to-sky-300 rounded-sm shadow-md border-x border-sky-400/50 flex flex-col justify-evenly items-center">
-            <div className="w-full h-1 bg-yellow-300/80" />
-            <div className="w-full h-1 bg-yellow-300/80" />
-            <div className="w-full h-1 bg-yellow-300/80" />
-          </div>
-        </div>
-
+      <div className="relative w-64 h-56 flex flex-col items-center justify-end select-none mt-2">
         {/* Tier 1 (Top Layer: Soft Baby Blue & Vanilla Cream) */}
         <div className="relative w-36 h-12 bg-gradient-to-b from-sky-100 to-sky-200 rounded-t-2xl border border-sky-300/60 shadow-inner z-10 flex items-center justify-center">
+          {/* Candle & Flame (Standing cleanly ON TOP of Tier 1) */}
+          <div className="absolute -top-[62px] left-1/2 -translate-x-1/2 flex flex-col items-center z-20">
+            {!isBlownOut ? (
+              <button
+                onClick={handleBlowCandle}
+                title="Ketuk untuk meniup lilin!"
+                className="relative cursor-pointer group focus:outline-none transition-transform hover:scale-110"
+                aria-label="Tiup lilin ulang tahun"
+              >
+                {/* Flame (Warm butter yellow with sky blue core) */}
+                <div className="w-5 h-8 bg-gradient-to-t from-sky-400 via-amber-300 to-yellow-100 rounded-full animate-flicker shadow-[0_0_15px_#fde047]" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2 h-3.5 bg-sky-300/80 rounded-full blur-[1px]" />
+                <div className="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity bg-slate-900/90 text-yellow-200 text-[10px] px-2 py-0.5 rounded whitespace-nowrap border border-yellow-400/30">
+                  Tiup lilinnya! ✨
+                </div>
+              </button>
+            ) : (
+              /* Smoke wisps after blowing out */
+              <div className="relative h-8 flex flex-col items-center justify-end">
+                <div className="w-1.5 h-6 bg-gradient-to-t from-sky-200/50 to-transparent rounded-full blur-[1px] animate-pulse" />
+                <div className="w-2.5 h-2.5 bg-sky-300/30 rounded-full blur-sm -translate-y-2" />
+              </div>
+            )}
+
+            {/* Wick */}
+            <div className="w-0.5 h-2 bg-neutral-800" />
+
+            {/* Candle Body (Baby blue with butter yellow spiral stripes) */}
+            <div className="w-3.5 h-8 bg-gradient-to-b from-sky-100 via-sky-200 to-sky-300 rounded-sm shadow-md border-x border-sky-400/50 flex flex-col justify-evenly items-center">
+              <div className="w-full h-0.5 bg-yellow-300/80" />
+              <div className="w-full h-0.5 bg-yellow-300/80" />
+              <div className="w-full h-0.5 bg-yellow-300/80" />
+            </div>
+          </div>
+
           {/* Vanilla Cream Drips (Butter Yellow) */}
           <div className="absolute top-0 inset-x-0 h-4 bg-yellow-200/90 rounded-t-2xl flex justify-around items-end">
             <span className="w-2.5 h-3 bg-yellow-200/90 rounded-b-full translate-y-1.5" />
@@ -99,8 +99,9 @@ export function InteractiveCake({ recipientName, age, onBlownOut }: InteractiveC
             <span className="w-2 h-2.5 bg-yellow-200/90 rounded-b-full translate-y-1" />
             <span className="w-3 h-3.5 bg-yellow-200/90 rounded-b-full translate-y-2" />
           </div>
+
           {age ? (
-            <span className="relative z-10 text-xs font-bold text-sky-950 tracking-wider font-serif bg-yellow-300/80 px-2.5 py-0.5 rounded-full mt-2 shadow-xs">
+            <span className="relative z-10 text-xs font-bold text-sky-950 tracking-wider font-serif bg-yellow-300/90 px-3 py-1 rounded-full mt-2.5 shadow-sm border border-yellow-400/50">
               Ke-{age} ✨
             </span>
           ) : (
