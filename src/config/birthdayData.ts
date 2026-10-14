@@ -44,11 +44,14 @@ export const BIRTHDAY_DATA: BirthdayData = {
 
   // --- 2. UCAPAN & DOA ---
   messageTitle: 'Happy Birthday, Hasnaaa! 🌟🥳🎉',
-  messageBody: `Barakallah fii umrik, Hasna! 🤍
+  messageBody: `
+
+Happy Birthday, Hasnaaa! 🌟🥳🎉
+Barakallah fii umrik, Hasna! 🤍
 
 Semoga Allah selalu menjaga langkahmu, melapangkan hatimu, menguatkanmu dalam setiap proses, dan memudahkan segala hal baik yang sedang kamu perjuangkan.
 
-Selamat bertambah usia yaa, perempuan cantik yang satu ini wkwkwk 🫠🫰🏻
+Selamat bertambah usia yaa, perempuan cantik, imut, dan menggemaskan (😙🤏) yang satu ini wkwkwk 🫠🫰🏻
 
 Semoga di umur yang baru ini, kamu selalu diberi kesehatan, kebahagiaan, kemudahan dalam setiap urusan, dan tentunya kelancaran dalam menjalani perkuliahan. Semoga apa yang sedang kamu usahakan sekarang maupun hal-hal yang masih kamu impikan nantinya bisa satu per satu tercapai. Aamiin 🤲🏻
 Aku juga berharap semoga di umur yang baru ini kamu bisa menjadi pribadi yang semakin baik, semakin kuat menghadapi apa pun yang datang, dan tetap menjadi Hasna yang aku kenal selama ini. Kalau suatu saat nanti ada hari-hari yang terasa berat, semoga kamu selalu punya alasan untuk tetap tersenyum dan semangat lagi.
@@ -60,6 +63,7 @@ Sekali lagi, happy birthday, Hasna! Semoga hari ini jadi salah satu hari yang me
 Semoga Allah memberikanmu banyak alasan untuk bersyukur dan kebahagiaan yang membawa berkah. Aamiin 🤲🏻
 
 "BTW ini sebagian aku copas dari AI wkwk 😙😙"
+
 `,
 
   // --- 3. UNTAIAN DOA & HARAPAN SPESIAL ---
