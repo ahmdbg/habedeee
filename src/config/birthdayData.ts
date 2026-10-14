@@ -73,5 +73,5 @@ Semoga Allah memberikanmu banyak alasan untuk bersyukur dan kebahagiaan yang mem
 
   // --- 6. TARGET WAKTU COUNTDOWN ---
   // Sebelum pukul 20.00 WIB tanggal 15 Oktober 2026, web terkunci dengan halaman hitung mundur
-  unlockTargetTime: '2026-10-14T23:48:00+07:00',
+  unlockTargetTime: '2026-10-15T20:00:00+07:00',
 };
