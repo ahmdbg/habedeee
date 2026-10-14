@@ -48,7 +48,9 @@ export const BIRTHDAY_DATA: BirthdayData = {
 
 Semoga Allah selalu menjaga langkahmu, melapangkan hatimu, menguatkanmu dalam setiap proses, dan memudahkan segala hal baik yang sedang kamu perjuangkan.
 
-Selamat bertambah usia yaa. Semoga di umur yang baru ini, kamu selalu diberi kesehatan, kebahagiaan, kemudahan dalam setiap urusan, dan tentunya kelancaran dalam menjalani perkuliahan. Semoga apa yang sedang kamu usahakan sekarang maupun hal-hal yang masih kamu impikan nantinya bisa satu per satu tercapai. Aamiin 🤲🏻
+Selamat bertambah usia yaa, perempuan cantik yang satu ini wkwkwk 🫠🫰🏻
+
+Semoga di umur yang baru ini, kamu selalu diberi kesehatan, kebahagiaan, kemudahan dalam setiap urusan, dan tentunya kelancaran dalam menjalani perkuliahan. Semoga apa yang sedang kamu usahakan sekarang maupun hal-hal yang masih kamu impikan nantinya bisa satu per satu tercapai. Aamiin 🤲🏻
 Aku juga berharap semoga di umur yang baru ini kamu bisa menjadi pribadi yang semakin baik, semakin kuat menghadapi apa pun yang datang, dan tetap menjadi Hasna yang aku kenal selama ini. Kalau suatu saat nanti ada hari-hari yang terasa berat, semoga kamu selalu punya alasan untuk tetap tersenyum dan semangat lagi.
 
 Oh iya, makasih yaa sudah hadir di hidupku sampai sejauh ini. Lucu juga kalau dipikir-pikir, kita yang dulu cuma saling suka sejak SMA, sekarang sudah sama-sama kuliah dan masih bisa saling cerita hampir setiap hari, meskipun sekarang kita ada di kota yang berbeda wkwkwk 😭
@@ -57,7 +59,7 @@ Aku nggak tahu ke depannya bakal seperti apa, tapi untuk sekarang aku senang bis
 Sekali lagi, happy birthday, Hasna! Semoga hari ini jadi salah satu hari yang menyenangkan buat kamu. Jangan lupa bahagia, jangan terlalu keras sama diri sendiri, dan semoga hal-hal baik selalu menemukan jalan untuk datang ke kamu.
 Semoga Allah memberikanmu banyak alasan untuk bersyukur dan kebahagiaan yang membawa berkah. Aamiin 🤲🏻
 
-"BTW ini aku copas dari AI wkwk 😙😙"
+"BTW ini sebagian aku copas dari AI wkwk 😙😙"
 `,
 
   // --- 3. UNTAIAN DOA & HARAPAN SPESIAL ---
