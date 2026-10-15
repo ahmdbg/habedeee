@@ -23,6 +23,7 @@ export function CelebrationCard({ onShowCountdown }: CelebrationCardProps) {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
 
   const data = BIRTHDAY_DATA;
+  const photos = (data.photoUrls?.length ? data.photoUrls : data.photoUrl ? [data.photoUrl] : []).slice(0, 3);
 
   // Trigger grand celebration burst with sky blue & butter yellow confetti
   const triggerGrandBurst = () => {
@@ -210,29 +211,34 @@ export function CelebrationCard({ onShowCountdown }: CelebrationCardProps) {
 
               {/* Photo & Recipient Headline */}
               <div className="relative z-10 text-center space-y-4 mb-8">
-                {data.photoUrl && (
-                  <div className="relative inline-block mb-2">
-                    {/* Glowing outer soft ring */}
-                    <div className="w-36 h-36 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full p-2 bg-gradient-to-tr from-sky-400 via-yellow-200 to-sky-300 shadow-[0_0_30px_rgba(56,189,248,0.25)] mx-auto relative group">
-                      <div className="w-full h-full rounded-full p-1 bg-[#06142c]">
-                        <img
-                          src={data.photoUrl}
-                          alt={data.recipientFullName}
-                          referrerPolicy="no-referrer"
-                          className="w-full h-full object-cover rounded-full"
-                          onError={(e) => {
-                            (e.target as HTMLElement).style.display = 'none';
-                          }}
-                        />
-                      </div>
+                {photos.length > 0 && (
+                  <div className="grid grid-cols-3 gap-2.5 sm:gap-4 max-w-2xl mx-auto mb-6">
+                    {photos.map((photo, index) => (
+                      <div
+                        key={`${photo}-${index}`}
+                        className="relative aspect-[4/5] rounded-2xl sm:rounded-3xl p-[3px] bg-gradient-to-br from-sky-400 via-yellow-200 to-sky-300 shadow-[0_0_24px_rgba(56,189,248,0.18)]"
+                      >
+                        <div className="w-full h-full rounded-[calc(1rem-3px)] sm:rounded-[calc(1.5rem-3px)] overflow-hidden bg-[#06142c]">
+                          <img
+                            src={photo}
+                            alt={`${data.recipientFullName} - foto ${index + 1}`}
+                            referrerPolicy="no-referrer"
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              (e.target as HTMLElement).style.display = 'none';
+                            }}
+                          />
+                        </div>
 
-                      {/* Sweet Ribbon & Age Tag at bottom */}
-                      <div className="absolute -bottom-2 right-2 sm:right-4 bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-300 text-slate-950 font-bold text-[11px] sm:text-xs px-3 py-1 rounded-full shadow-lg border-2 border-[#06142c] flex items-center gap-1 select-none">
-                        <span>🎀</span>
-                        <span>Sweet 19</span>
-                        <span>✨</span>
+                        {index === 0 && (
+                          <div className="absolute -bottom-2 -right-1 sm:right-2 bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-300 text-slate-950 font-bold text-[9px] sm:text-xs px-2 sm:px-3 py-1 rounded-full shadow-lg border-2 border-[#06142c] flex items-center gap-1 select-none">
+                            <span>🎀</span>
+                            <span>Sweet {data.age}</span>
+                            <span>✨</span>
+                          </div>
+                        )}
                       </div>
-                    </div>
+                    ))}
                   </div>
                 )}
 

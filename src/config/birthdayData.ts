@@ -14,7 +14,8 @@ export interface BirthdayData {
   recipientNickname: string;
   age: string;
   celebrationDate: string;
-  photoUrl?: string; // Boleh diisi link foto atau dikosongkan
+  photoUrls?: string["../assets/image/hasna.jpeg", "../assets/image/hasna2.jpeg", "../assets/image/hasna3.jpeg"]; // Maksimal tiga foto untuk galeri kartu
+  photoUrl?: string; // Kompatibilitas dengan konfigurasi foto tunggal
 
   // 2. Pesan Ucapan & Doa
   messageTitle: string;
@@ -40,7 +41,7 @@ export const BIRTHDAY_DATA: BirthdayData = {
   recipientNickname: 'Hasnaaa',
   age: '19',
   celebrationDate: 'Hari Ulang Tahun',
-  photoUrl: hasnaPhoto, // Foto profil penerima kartu
+  photoUrls: [hasnaPhoto], // Tambahkan dua foto lagi untuk melengkapi galeri
 
   // --- 2. UCAPAN & DOA ---
   messageTitle: 'Happy Birthday, Hasnaaa! 🌟🥳🎉',
@@ -57,13 +58,13 @@ Semoga di umur yang baru ini, kamu selalu diberi kesehatan, kebahagiaan, kemudah
 
 Aku juga berharap semoga di umur yang baru ini kamu bisa menjadi pribadi yang semakin baik, semakin kuat menghadapi apa pun yang datang, dan tetap menjadi Hasna yang aku kenal selama ini. Kalau suatu saat nanti ada hari-hari yang terasa berat, semoga kamu selalu punya alasan untuk tetap tersenyum dan semangat lagi.
 
-Oh iya, makasih yaa sudah hadir di hidupku sampai sejauh ini. Lucu juga kalau dipikir-pikir, kita yang dulu cuma saling suka sejak SMA, sekarang sudah sama-sama kuliah dan masih bisa saling cerita hampir setiap hari, meskipun sekarang kita ada di kota yang berbeda wkwkwk 😭
-Aku nggak tahu ke depannya bakal seperti apa, tapi untuk sekarang aku senang bisa mengenal kamu lebih dekat, bisa berbagi cerita sama kamu, dan bisa punya seseorang seperti kamu untuk aku tunggu kabarnya setiap hari. 🥹
+Oh iya, makasih yaa sudah hadir di hidupku sampai sejauh ini. Lucu juga kalau dipikir-pikir, aku yang dulunya cuma bisa diam diam menyukaimu dari jauh, sekarang bisa lebih dekat sama kamu, bisa ngobrol sama kamu (meskipun lewat chat sih 🙃), dan bisa nunggu kabar dari kamu setiap hari.
+Aku nggak tahu ke depannya bakal seperti apa, tapi untuk sekarang aku senang bisa mengenal kamu lebih dekat, bisa berbagi cerita sama kamu, dan bisa kenal dengan seseorang seperti kamu yang mau menerima perasaanku ini.
 
-Sekali lagi, happy birthday, Hasna! Semoga hari ini jadi salah satu hari yang menyenangkan buat kamu. Jangan lupa bahagia, jangan terlalu keras sama diri sendiri, dan semoga hal-hal baik selalu menemukan jalan untuk datang ke kamu.
+Sekali lagi, happy birthday ya hasna! Semoga hari ini jadi salah satu hari yang menyenangkan buat kamu. Jangan lupa bahagia, jangan terlalu keras sama diri sendiri, dan semoga hal-hal baik selalu menemukan jalan untuk datang ke kamu.
 Semoga Allah memberikanmu banyak alasan untuk bersyukur dan kebahagiaan yang membawa berkah. Aamiin 🤲🏻
 
-"BTW ini sebagian aku copas dari AI wkwk 😙😙"
+"BTW ini beberapa kalimat aku copas dari AI wkwk (jadi mohon maklum kalau agak terlalu kaku), sama satu lagi, aku izin screenshot fotomu yang ada di sorotan dan postingan IGmu buat aku pajang disini yaaa hehehe 😙😙"
 
 `,
 
@@ -71,7 +72,7 @@ Semoga Allah memberikanmu banyak alasan untuk bersyukur dan kebahagiaan yang mem
   specialWishes: [
     'Semoga kuliahnya dimudahkan yaa 🎓',
     'Sehat selaluu, jangan sampai sakitt 😊✨',
-    'Semoga harapanmu (yang itu) bisa terkabul yaaa 🙂🙂',
+    'Semoga harapanmu (yang itu) bisa terkabul yaaa nanti 🙂🙂',
     'Tetap semangattt pokoknya, biar bisa lanjut S2 😙🤍',
   ],
 
