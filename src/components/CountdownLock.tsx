@@ -116,6 +116,13 @@ export function CountdownLock({ onUnlock, onPreviewBypass }: CountdownLockProps)
           </span>
         </div>
       </div>
+            {/* Discreet Bypass for Owner (almost invisible in bottom corner, clickable for preview) */}
+      <button
+        onClick={onPreviewBypass}
+        className="fixed bottom-3 right-3 text-[0.2px] text-sky-400/90 p-2 rounded"
+      >
+        ✦
+      </button>
     </div>
   );
 }
