@@ -1,4 +1,6 @@
 import hasnaPhoto from '../assets/image/hasna.jpeg';
+import hasnaPhoto2 from '../assets/image/hasna2.jpeg';
+import hasnaPhoto3 from '../assets/image/hasna3.jpeg';
 
 /**
  * ============================================================================
@@ -14,7 +16,7 @@ export interface BirthdayData {
   recipientNickname: string;
   age: string;
   celebrationDate: string;
-  photoUrls?: string["../assets/image/hasna.jpeg", "../assets/image/hasna2.jpeg", "../assets/image/hasna3.jpeg"]; // Maksimal tiga foto untuk galeri kartu
+  photoUrls?: string[]; // Maksimal tiga foto untuk galeri kartu
   photoUrl?: string; // Kompatibilitas dengan konfigurasi foto tunggal
 
   // 2. Pesan Ucapan & Doa
@@ -41,7 +43,8 @@ export const BIRTHDAY_DATA: BirthdayData = {
   recipientNickname: 'Hasnaaa',
   age: '19',
   celebrationDate: 'Hari Ulang Tahun',
-  photoUrls: [hasnaPhoto], // Tambahkan dua foto lagi untuk melengkapi galeri
+  photoUrls: [hasnaPhoto, hasnaPhoto2, hasnaPhoto3],
+  photoUrl: hasnaPhoto, // Foto profil utama penerima kartu
 
   // --- 2. UCAPAN & DOA ---
   messageTitle: 'Happy Birthday, Hasnaaa! 🌟🥳🎉',

@@ -230,8 +230,8 @@ export function CelebrationCard({ onShowCountdown }: CelebrationCardProps) {
                           />
                         </div>
 
-                        {index === 0 && (
-                          <div className="absolute -bottom-2 -right-1 sm:right-2 bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-300 text-slate-950 font-bold text-[9px] sm:text-xs px-2 sm:px-3 py-1 rounded-full shadow-lg border-2 border-[#06142c] flex items-center gap-1 select-none">
+                        {index === (photos.length > 1 ? 1 : 0) && (
+                          <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-gradient-to-r from-yellow-300 via-amber-200 to-yellow-300 text-slate-950 font-bold text-[9px] sm:text-xs px-2.5 sm:px-3.5 py-1 rounded-full shadow-lg border-2 border-[#06142c] flex items-center gap-1 select-none z-10">
                             <span>🎀</span>
                             <span>Sweet {data.age}</span>
                             <span>✨</span>

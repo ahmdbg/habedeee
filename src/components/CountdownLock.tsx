@@ -3,7 +3,7 @@ import { BIRTHDAY_DATA } from '../config/birthdayData';
 
 interface CountdownLockProps {
   onUnlock: () => void;
-  onPreviewBypass: () => void;
+  onPreviewBypass?: () => void;
 }
 
 interface TimeRemaining {
@@ -14,7 +14,7 @@ interface TimeRemaining {
   isUnlocked: boolean;
 }
 
-export function CountdownLock({ onUnlock, onPreviewBypass }: CountdownLockProps) {
+export function CountdownLock({ onUnlock }: CountdownLockProps) {
   const data = BIRTHDAY_DATA;
   const targetDate = new Date(data.unlockTargetTime).getTime();
 
@@ -116,13 +116,6 @@ export function CountdownLock({ onUnlock, onPreviewBypass }: CountdownLockProps)
           </span>
         </div>
       </div>
-      <button
-        type="button"
-        onClick={onPreviewBypass}
-        className="fixed bottom-4 right-4 z-20 rounded-full border border-sky-400/40 bg-[#071733]/90 px-4 py-2 text-sm font-semibold text-sky-200 shadow-lg shadow-sky-950/40 transition-colors hover:border-sky-300/70 hover:bg-[#0b2144] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-300"
-      >
-        ✦ Preview
-      </button>
     </div>
   );
 }
