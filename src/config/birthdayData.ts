@@ -47,13 +47,14 @@ export const BIRTHDAY_DATA: BirthdayData = {
   messageBody: `
 
 Happy Birthday, Hasnaaa! 🌟🥳🎉
-Barakallah fii umrik, Hasna! 🤍
+Barakallah fii umrik yaa 💙🩵
 
 Semoga Allah selalu menjaga langkahmu, melapangkan hatimu, menguatkanmu dalam setiap proses, dan memudahkan segala hal baik yang sedang kamu perjuangkan.
 
 Selamat bertambah usia yaa, perempuan cantik, imut, dan menggemaskan (😙🤏) yang satu ini wkwkwk 🫠🫰🏻
 
 Semoga di umur yang baru ini, kamu selalu diberi kesehatan, kebahagiaan, kemudahan dalam setiap urusan, dan tentunya kelancaran dalam menjalani perkuliahan. Semoga apa yang sedang kamu usahakan sekarang maupun hal-hal yang masih kamu impikan nantinya bisa satu per satu tercapai. Aamiin 🤲🏻
+
 Aku juga berharap semoga di umur yang baru ini kamu bisa menjadi pribadi yang semakin baik, semakin kuat menghadapi apa pun yang datang, dan tetap menjadi Hasna yang aku kenal selama ini. Kalau suatu saat nanti ada hari-hari yang terasa berat, semoga kamu selalu punya alasan untuk tetap tersenyum dan semangat lagi.
 
 Oh iya, makasih yaa sudah hadir di hidupku sampai sejauh ini. Lucu juga kalau dipikir-pikir, kita yang dulu cuma saling suka sejak SMA, sekarang sudah sama-sama kuliah dan masih bisa saling cerita hampir setiap hari, meskipun sekarang kita ada di kota yang berbeda wkwkwk 😭
@@ -85,5 +86,5 @@ Semoga Allah memberikanmu banyak alasan untuk bersyukur dan kebahagiaan yang mem
 
   // --- 6. TARGET WAKTU COUNTDOWN ---
   // Sebelum pukul 20.00 WIB tanggal 15 Oktober 2026, web terkunci dengan halaman hitung mundur
-  unlockTargetTime: '2026-10-15T21:00:00+07:00',
+  unlockTargetTime: '2026-10-15T21:30:00+07:00',
 };
